@@ -1,0 +1,46 @@
+{
+  "template": "https://github.com/lkubb/salt-template-formula",
+  "commit": "50a694adefdf54f1ca465db433c033ca764942bc",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "_extensions": [
+        "local_extensions.YAMLDumper"
+      ],
+      "_jinja2_env_vars": {
+        "block_start_string": "{!",
+        "block_end_string": "!}",
+        "variable_start_string": "{=",
+        "variable_end_string": "=}",
+        "comment_start_string": "{@",
+        "comment_end_string": "@}"
+      },
+      "name": "BorgBackup",
+      "abbr": "borg",
+      "abbr_pysafe": "borg",
+      "pkg": "borgbackup",
+      "needs_repo": "",
+      "config": "",
+      "service": "",
+      "subcomponent": "",
+      "subcomponent_config": "",
+      "git_username": "lkubb",
+      "_lookup": {
+        "user": "borg",
+        "group": "borg",
+        "home": "/home/borg",
+        "shell": "/usr/bin/bash",
+        "repos": "/home/borg/repos"
+      },
+      "_settings": {
+        "server": {
+          "enable": true,
+          "symlink_repos": false,
+          "repos": []
+        }
+      },
+      "_template": "https://github.com/lkubb/salt-template-formula"
+    }
+  },
+  "directory": null
+}

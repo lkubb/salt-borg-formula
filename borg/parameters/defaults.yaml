@@ -1,0 +1,23 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+#
+# Set default values.
+---
+values:
+  lookup:
+    rootgroup: root
+    pkg:
+      name: borgbackup
+    group: borg
+    home: /home/borg
+    repos: /home/borg/repos
+    shell: /usr/bin/bash
+    user: borg
+  server:
+    enable: true
+    repos: []
+    symlink_repos: false
+  # Just here for testing
+  added_in_defaults: defaults_value
+  winner: defaults
+...
