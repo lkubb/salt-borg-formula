@@ -16,7 +16,6 @@ borg:
     key_bits: null
     key_type: ed25519
   server:
-    enable: true
     repos: []
     repos_mine:
       default:

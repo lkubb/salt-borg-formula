@@ -6,6 +6,8 @@
 
 include:
   - .package
-{%- if borg.server.enable %}
+{%- if "server" == pillar.get("borg_role") %}
   - .server
+{%- elif "client" == pillar.get("borg_role") %}
+  - .client
 {%- endif %}

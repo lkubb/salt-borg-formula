@@ -9,7 +9,6 @@ borg:
       # Key type parameter (-t) for ssh-keygen when generating minion keys
     key_type: ed25519
   server:
-    enable: true
       # List of dictionaries containing at least `name` and `key`
       # values, key being the authorized public key.
       # Furthermore, append_only and quota are available. See below.
