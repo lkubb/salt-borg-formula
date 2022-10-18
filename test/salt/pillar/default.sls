@@ -12,9 +12,16 @@ borg:
     repos: /home/borg/repos
     shell: /usr/bin/bash
     user: borg
+  client:
+    key_bits: null
+    key_type: ed25519
   server:
     enable: true
     repos: []
+    repos_mine:
+      default:
+        append_only: false
+        quota: false
     symlink_repos: false
 
   tofs:

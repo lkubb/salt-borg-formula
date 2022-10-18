@@ -3,10 +3,34 @@
 # yamllint disable rule:comments-indentation
 ---
 borg:
-
+  client:
+      # Key bitlength (ssh-keygen -b parameter) when generating minion keys
+    key_bits: null
+      # Key type parameter (-t) for ssh-keygen when generating minion keys
+    key_type: ed25519
   server:
     enable: true
+      # List of dictionaries containing at least `name` and `key`
+      # values, key being the authorized public key.
+      # Furthermore, append_only and quota are available. See below.
     repos: []
+      # This configures repo parameters for mine-sourced repositories.
+      # The actual list of repositories is determined by minions having
+      # "client" in their pillar:borg_role list that have sent
+      # "borg_pubkey" to the mine. This is handled by the borg.client state.
+      # To make this work, add ``borg_role: client`` to their pillar and target
+      # ``borg.client`` to them in your top file with ``I@borg_role:client``.
+      # Furthermore, your borg server needs ``borg_role: server`` in its pillar
+      # to be able to fetch the pubkeys from the mine.
+    repos_mine:
+        # Configures default repository parameters for mine-sourced repositories.
+      default:
+        append_only: false
+        quota: false
+      # override these parameters for a specific minion ID
+    # sampleminion1:
+    #   append_only: true
+    #   quota: 20G
     symlink_repos: false
 
   lookup:

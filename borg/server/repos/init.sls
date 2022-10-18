@@ -10,13 +10,20 @@ command="borg serve --restrict-to-repository '{{ borg.lookup.repos | path_join(r
 
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as borg with context %}
+{%- set mine_repos = salt["mine.get"]("borg_role:client", "borg_pubkey", tgt_type="pillar") %}
 
-{%- if borg.server.repos %}
+{%- if mine_repos or borg.server.repos %}
 
 Borg repositories are served:
   ssh_auth.manage:
     - user: {{ borg.lookup.user }}
     - ssh_keys:
+{%-   for minion, pubkey in mine_repos.items() %}
+{%-     set repo_config = salt["defaults.deepcopy"](borg.server.repos_mine.get("default", {})) %}
+{%-     do repo_config.update({"key": pubkey, "name": minion}) %}
+{%-     do repo_config.update(borg.server.repos_mine.get(minion, {})) %}
+      - {{ render_repo(repo_config) }}
+{%-   endfor %}
 {%-   for repo in borg.server.repos %}
       - {{ render_repo(repo) }}
 {%-   endfor %}

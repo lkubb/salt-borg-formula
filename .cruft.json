@@ -33,10 +33,20 @@
         "repos": "/home/borg/repos"
       },
       "_settings": {
+        "client": {
+          "key_bits": null,
+          "key_type": "ed25519"
+        },
         "server": {
           "enable": true,
           "symlink_repos": false,
-          "repos": []
+          "repos": [],
+          "repos_mine": {
+            "default": {
+              "append_only": false,
+              "quota": false
+            }
+          }
         }
       },
       "_template": "https://github.com/lkubb/salt-template-formula"
