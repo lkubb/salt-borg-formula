@@ -7,6 +7,8 @@ borg:
     # Just for testing purposes
     winner: lookup
     added_in_lookup: lookup_value
+    pkg:
+      name: borgbackup
     group: borg
     home: /home/borg
     repos: /home/borg/repos
