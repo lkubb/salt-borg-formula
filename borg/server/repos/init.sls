@@ -1,5 +1,12 @@
-# -*- coding: utf-8 -*-
 # vim: ft=sls
+
+{#-
+    Creates an entry in the ``borg`` user's ``authorized_keys`` file
+    for each minion that has sent a public key to the mine.
+
+    Only minions that have the pillar value ``borg_role`` == ``client``
+    are included.
+#}
 
 {%- macro render_repo(repo) -%}
 command="borg serve --restrict-to-repository '{{ borg.lookup.repos | path_join(repo.name) }}'

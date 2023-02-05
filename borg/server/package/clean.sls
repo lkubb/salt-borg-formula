@@ -1,5 +1,12 @@
-# -*- coding: utf-8 -*-
 # vim: ft=sls
+
+{#-
+    Removes the ``borg`` user and, if the repository directory
+    is managed as a symlink only, will also remove the symlink.
+
+    Does not delete the actual directory containing the repositories
+    to prevent accidental data loss.
+#}
 
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as borg with context %}

@@ -1,5 +1,8 @@
-# -*- coding: utf-8 -*-
 # vim: ft=sls
+
+{#-
+    Removes the borg package.
+#}
 
 {%- set tplroot = tpldir.split('/')[0] %}
 {%- set sls_config_clean = tplroot ~ '.config.clean' %}
@@ -8,7 +11,7 @@
 include:
   - {{ sls_config_clean }}
 
-borg-package-clean-pkg-removed:
+BorgBackup is removed:
   pkg.removed:
     - name: {{ borg.lookup.pkg.name }}
     - require:
