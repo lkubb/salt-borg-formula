@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/lkubb/salt-template-formula",
-  "commit": "c33be7342f32db2e215f929e5a51a690ed445c11",
+  "commit": "a63c03d95375f235c2d4a6159a26ae48d4fdc40b",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -25,14 +25,14 @@
       "subcomponent": "",
       "subcomponent_config": "",
       "git_username": "lkubb",
-      "_lookup": {
+      "lookup": {
         "user": "borg",
         "group": "borg",
         "home": "/home/borg",
         "shell": "/usr/bin/bash",
         "repos": "/home/borg/repos"
       },
-      "_settings": {
+      "settings": {
         "client": {
           "key_bits": null,
           "key_type": "ed25519"
