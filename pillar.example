@@ -1,7 +1,22 @@
 # vim: ft=yaml
 # yamllint disable rule:comments-indentation
+# yamllint disable rule:line-length
 ---
 borg:
+  install:
+      # Installation method - from package `repo` or binary download (`bin`)
+      # On RedHat, `repo` requires the EPEL repository to be present
+    method: repo
+      # The following are only effective when install:method == `bin`
+      #
+      # Version to install. `latest` will check GitHub for the latest release.
+    version: latest
+      # Restrict the major version of the latest release
+    version_major: 1
+      # Allow alpha releases
+    allow_alpha: false
+      # Allow beta releases
+    allow_beta: false
   client:
       # Key bitlength (ssh-keygen -b parameter) when generating minion keys
     key_bits: null
@@ -32,6 +47,24 @@ borg:
     symlink_repos: false
 
   lookup:
+    bin:
+      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc
+      signed_by_all: null
+      signed_by_any:
+        - 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
+      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64
+      source_hash: null
+      source_hash_sig: null
+      symlink: /usr/local/bin/borg
+      target: /opt/borgbackup/borg
+    gh_repo: borgbackup/borg
+    gpg:
+      fingerprint: 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
+      keyserver: keys.openpgp.org
+      lib:
+        pip: python-gnupg
+        pkg: python3-gnupg
+      pkg: gpg
     group: borg
     home: /home/borg
     repos: /home/borg/repos

@@ -10,6 +10,24 @@ values:
     rootgroup: root
     pkg:
       name: borgbackup
+    bin:
+      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc
+      signed_by_all: null
+      signed_by_any:
+        - 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
+      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64
+      source_hash: null
+      source_hash_sig: null
+      symlink: /usr/local/bin/borg
+      target: /opt/borgbackup/borg
+    gh_repo: borgbackup/borg
+    gpg:
+      fingerprint: 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
+      keyserver: keys.openpgp.org
+      lib:
+        pip: python-gnupg
+        pkg: python3-gnupg
+      pkg: gpg
     group: borg
     home: /home/borg
     repos: /home/borg/repos
@@ -18,6 +36,12 @@ values:
   client:
     key_bits: null
     key_type: ed25519
+  install:
+    allow_alpha: false
+    allow_beta: false
+    method: repo
+    version: latest
+    version_major: 1
   server:
     repos: []
     repos_mine:
