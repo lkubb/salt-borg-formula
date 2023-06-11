@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/lkubb/salt-template-formula",
-  "commit": "480ee76119cf46d599a1ef29b9e0472958c827c6",
+  "commit": "b65b98c8b0f95cfed8bf31868cedbd08b9da3e8c",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -39,7 +39,9 @@
           "signature": "https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc",
           "source_hash": null,
           "source_hash_sig": null,
-          "signed_by_any": ["6D5BEF9ADD2075805747B70F9F88FB52FAF7B393"],
+          "signed_by_any": [
+            "6D5BEF9ADD2075805747B70F9F88FB52FAF7B393"
+          ],
           "signed_by_all": null
         },
         "gpg": {

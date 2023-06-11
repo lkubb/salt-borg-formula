@@ -8,7 +8,7 @@
     to prevent accidental data loss.
 #}
 
-{%- set tplroot = tpldir.split('/')[0] %}
+{%- set tplroot = tpldir.split("/")[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as borg with context %}
 
 Borg user is absent:

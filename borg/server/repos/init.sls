@@ -15,7 +15,7 @@ command="borg serve --restrict-to-repository '{{ borg.lookup.repos | path_join(r
 ",restrict {{ repo.key }}
 {%- endmacro %}
 
-{%- set tplroot = tpldir.split('/')[0] %}
+{%- set tplroot = tpldir.split("/")[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as borg with context %}
 {%- set mine_repos = salt["mine.get"]("borg_role:client", "borg_pubkey", tgt_type="pillar") %}
 

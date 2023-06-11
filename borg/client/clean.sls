@@ -5,7 +5,7 @@
     is absent from the local filesystem and the mine.
 #}
 
-{%- set tplroot = tpldir.split('/')[0] %}
+{%- set tplroot = tpldir.split("/")[0] %}
 {%- from tplroot ~ "/map.jinja" import mapdata as borg with context %}
 
 Borg SSH client key is removed:
