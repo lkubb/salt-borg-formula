@@ -2,10 +2,14 @@
 
 {#-
     Creates an entry in the ``borg`` user's ``authorized_keys`` file
-    for each minion that has sent a public key to the mine.
+    for each minion that has sent a public key to the mine and for
+    configured ones.
 
-    Only minions that have the pillar value ``borg_role`` == ``client``
-    are included.
+    For mine sources, only minions that have the pillar value
+    ``borg_role`` == ``client`` are included. The mine-sourced
+    public keys will be restricted to a repository named exactly
+    the same as the minion ID. If you need more fine-grained control,
+    you will need to configure SSH certificates instead.
 #}
 
 {%- macro render_repo(repo) -%}

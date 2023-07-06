@@ -32,6 +32,16 @@ borg:
     shell: /usr/bin/bash
     user: borg
   client:
+    cert_params:
+      all_principals: false
+      backend: null
+      backend_args: null
+      ca_server: null
+      signing_policy: null
+      ttl: null
+      ttl_remaining: null
+      valid_principals: null
+    certs: {}
     key_bits: null
     key_type: ed25519
   install:
