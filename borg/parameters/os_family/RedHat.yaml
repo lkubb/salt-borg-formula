@@ -13,4 +13,6 @@
 values:
   lookup:
     pkg_manager: yum
+    bin:
+      symlink: /usr/local/sbin/borg
 ...
