@@ -19,6 +19,9 @@ BorgBackup is installed:
 {%-     if not borg.install.allow_beta %}
 {%-       do disallow.append("b") %}
 {%-     endif %}
+{%-     if not borg.install.allow_rc %}
+{%-       do disallow.append("rc") %}
+{%-     endif %}
 {%-     set version = salt["github_releases.latest_version"](borg.lookup.gh_repo, borg.install.version_major, disallow=disallow) %}
 {%-   endif %}
 

@@ -1,4 +1,5 @@
 # vim: ft=yaml
+# yamllint disable rule:line-length
 ---
 borg:
   lookup:
@@ -47,6 +48,7 @@ borg:
   install:
     allow_alpha: false
     allow_beta: false
+    allow_rc: false
     method: repo
     version: latest
     version_major: 1

@@ -17,6 +17,8 @@ borg:
     allow_alpha: false
       # Allow beta releases
     allow_beta: false
+      # Allow release candidates
+    allow_rc: false
   client:
       # Generate client certificates instead of sending
       # the public key to the mine. Requires `ssh_pki` modules.

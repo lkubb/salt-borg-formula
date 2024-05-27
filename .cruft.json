@@ -60,7 +60,8 @@
           "version": "latest",
           "version_major": 1,
           "allow_alpha": false,
-          "allow_beta": false
+          "allow_beta": false,
+          "allow_rc": false
         },
         "client": {
           "certs": {},
