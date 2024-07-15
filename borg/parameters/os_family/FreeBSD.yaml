@@ -14,4 +14,6 @@ values:
   lookup:
     pkg_manager: pkg
     rootgroup: wheel
+    bin:
+      os_name: freebsd
 ...

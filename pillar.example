@@ -19,6 +19,10 @@ borg:
     allow_beta: false
       # Allow release candidates
     allow_rc: false
+      # For borg releases >=1.4, <2 (currently), specify
+      # the glibc version the binary was compiled against.
+      # Currently defaults to 228 (the oldest one).
+    glibc: null
   client:
       # Generate client certificates instead of sending
       # the public key to the mine. Requires `ssh_pki` modules.
@@ -69,11 +73,12 @@ borg:
 
   lookup:
     bin:
-      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc
+      os_name: linux
+      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}.asc
       signed_by_all: null
       signed_by_any:
         - 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64
+      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}
       source_hash: null
       source_hash_sig: null
       symlink: /usr/local/bin/borg

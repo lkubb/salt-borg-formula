@@ -35,14 +35,15 @@
         "bin": {
           "target": "/opt/borgbackup/borg",
           "symlink": "/usr/local/bin/borg",
-          "source": "https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64",
-          "signature": "https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc",
+          "source": "https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}",
+          "signature": "https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}.asc",
           "source_hash": null,
           "source_hash_sig": null,
           "signed_by_any": [
             "6D5BEF9ADD2075805747B70F9F88FB52FAF7B393"
           ],
-          "signed_by_all": null
+          "signed_by_all": null,
+          "os_name": "linux"
         },
         "gpg": {
           "fingerprint": "6D5BEF9ADD2075805747B70F9F88FB52FAF7B393",
@@ -61,7 +62,8 @@
           "version_major": 1,
           "allow_alpha": false,
           "allow_beta": false,
-          "allow_rc": false
+          "allow_rc": false,
+          "glibc": null
         },
         "client": {
           "certs": {},

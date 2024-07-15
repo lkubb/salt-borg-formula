@@ -25,6 +25,20 @@ BorgBackup is installed:
 {%-     set version = salt["github_releases.latest_version"](borg.lookup.gh_repo, borg.install.version_major, disallow=disallow) %}
 {%-   endif %}
 
+{%-   set osname = borg.lookup.bin.os_name %}
+{%-   set version_float = version[:3] | float %}
+{%-   if version_float >= 1.4 and version_float < 2 %}
+{%-     if borg.install.glibc %}
+{%-       set glibc = "-glibc{}".format(borg.install.glibc) %}
+{%-     else %}
+{%-       set glibc = "-glibc228" %}
+{%-     endif %}
+{%-   else %}
+{%-     set glibc = "" %}
+{%-     set osname = osname ~ "64" %}
+{%-   endif %}
+
+
 Borg release GPG key is present:
   gpg.present:
     - name: {{ borg.lookup.gpg.fingerprint[-16:] }}
@@ -53,11 +67,11 @@ Borg binary is installed:
 {%-     set sources = [sources] %}
 {%-   endif %}
 {%-   for src in sources %}
-      - {{ src.format(version=version) }}
+      - {{ src.format(version=version, glibc=glibc, os=osname) }}
 {%-   endfor %}
-    - signature: {{ borg.lookup.bin.signature.format(version=version) if borg.lookup.bin.signature else "null" }}
-    - source_hash: {{ borg.lookup.bin.source_hash.format(version=version) if borg.lookup.bin.source_hash else "null" }}
-    - source_hash_sig: {{ borg.lookup.bin.source_hash_sig.format(version=version) if borg.lookup.bin.source_hash_sig else "null" }}
+    - signature: {{ borg.lookup.bin.signature.format(version=version, glibc=glibc, os=osname) if borg.lookup.bin.signature else "null" }}
+    - source_hash: {{ borg.lookup.bin.source_hash.format(version=version, glibc=glibc, os=osname) if borg.lookup.bin.source_hash else "null" }}
+    - source_hash_sig: {{ borg.lookup.bin.source_hash_sig.format(version=version, glibc=glibc, os=osname) if borg.lookup.bin.source_hash_sig else "null" }}
     - skip_verify: {{ not borg.lookup.bin.source_hash | to_bool }}  # The GitHub releases do not contain hashsum files
     - signed_by_any: {{ borg.lookup.bin.signed_by_any | json }}
     - signed_by_all: {{ borg.lookup.bin.signed_by_all | json }}

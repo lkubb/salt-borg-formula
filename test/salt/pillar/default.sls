@@ -10,11 +10,12 @@ borg:
     pkg:
       name: borgbackup
     bin:
-      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64.asc
+      os_name: linux
+      signature: https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}.asc
       signed_by_all: null
       signed_by_any:
         - 6D5BEF9ADD2075805747B70F9F88FB52FAF7B393
-      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-linux64
+      source: https://github.com/borgbackup/borg/releases/download/{version}/borg-{os}{glibc}
       source_hash: null
       source_hash_sig: null
       symlink: /usr/local/bin/borg
@@ -49,6 +50,7 @@ borg:
     allow_alpha: false
     allow_beta: false
     allow_rc: false
+    glibc: null
     method: repo
     version: latest
     version_major: 1
